@@ -10,11 +10,15 @@ async function main() {
 
   const mantle = await hre.ethers.getContractFactory("MantleNFT");
   const mantleNFT = await mantle.deploy();
-
   await mantleNFT.deployed();
   console.log(
     `MantlNFT deployed to ${mantleNFT.address}`
   );
+
+  const user = await hre.ethers.getContractFactory("User");
+  const userContract = await user.deploy();
+  await userContract.deployed();
+  console.log(`UserContract deployed to ${userContract.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
