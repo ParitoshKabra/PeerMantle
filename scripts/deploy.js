@@ -28,7 +28,10 @@ async function main() {
   const proxyPeerTube = await hre.ethers.getContractFactory("ProxyPeerTube");
   const proxyPeerTubeContract = await proxyPeerTube.deploy();
   await proxyPeerTubeContract.deployed();
+  const peerTubeAddress = await proxyPeerTubeContract._parent().then(res => res.toString());
+
   console.log(`ProxyPeerTubeContract deployed to ${proxyPeerTubeContract.address}`);
+  console.log(`PeerTubeContract deployed to ${peerTubeAddress}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

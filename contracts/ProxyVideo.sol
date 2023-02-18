@@ -3,55 +3,67 @@ pragma solidity ^0.8.0;
 import "./Video.sol";
 
 contract ProxyPeerTube {
-    address public _parent;
+    address payable public _parent;
+    address payable public _creator =
+        payable(0x88A4643d6900C28086aD21148D5CfffD32fA37C5);
 
     constructor() {
         PeerTube _peer = new PeerTube();
-        _parent = address(_peer);
+        _parent = payable(address(_peer));
     }
 
     event VideoUploaded(
-        string hash,
-        string title,
+        string videoId,
+        string name,
         string description,
-        string location,
-        string category,
-        string thumbnailHash,
-        string date,
+        uint256 createdAt,
+        uint256 durationInSeconds,
+        string downloadUrl,
+        string playbackId,
         address author
     );
 
     function indexVideo(
-        string memory _videoHash,
-        string memory _title,
-        string memory _description,
-        string memory _location,
-        string memory _category,
-        string memory _thumbnailHash,
-        string memory _date
+        string memory videoId,
+        string memory name,
+        string memory description,
+        uint256 createdAt,
+        uint256 durationInSeconds,
+        string memory downloadUrl,
+        string memory playbackId
     ) external {
         (bool sent, ) = _parent.call(
             abi.encodeWithSignature(
                 "uploadVideo(string, string, string, string, string, string, string)",
-                _videoHash,
-                _title,
-                _description,
-                _location,
-                _category,
-                _thumbnailHash,
-                _date
+                videoId,
+                name,
+                description,
+                createdAt,
+                durationInSeconds,
+                downloadUrl,
+                playbackId,
+                msg.sender
             )
         );
         require(sent, "Can't call remote procedure");
         emit VideoUploaded(
-            _videoHash,
-            _title,
-            _description,
-            _location,
-            _category,
-            _thumbnailHash,
-            _date,
+            videoId,
+            name,
+            description,
+            createdAt,
+            durationInSeconds,
+            downloadUrl,
+            playbackId,
             msg.sender
         );
+    }
+
+    fallback() external payable {
+        // React to receiving ether
+        _creator.transfer(address(this).balance);
+    }
+
+    receive() external payable {
+        // custom function code
     }
 }
