@@ -20,10 +20,15 @@ async function main() {
   // await userContract.deployed();
   // console.log(`UserContract deployed to ${userContract.address}`);
 
-  const peerTube = await hre.ethers.getContractFactory("PeerTube");
-  const peerTubeContract = await peerTube.deploy();
-  await peerTubeContract.deployed();
-  console.log(`PeerTubeContract deployed to ${peerTubeContract.address}`);
+  // const peerTube = await hre.ethers.getContractFactory("PeerTube");
+  // const peerTubeContract = await peerTube.deploy();
+  // await peerTubeContract.deployed();
+  // console.log(`PeerTubeContract deployed to ${peerTubeContract.address}`);
+
+  const proxyPeerTube = await hre.ethers.getContractFactory("ProxyPeerTube");
+  const proxyPeerTubeContract = await proxyPeerTube.deploy();
+  await proxyPeerTubeContract.deployed();
+  console.log(`ProxyPeerTubeContract deployed to ${proxyPeerTubeContract.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
