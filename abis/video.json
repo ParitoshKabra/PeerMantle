@@ -10,13 +10,13 @@
             {
                 "indexed": false,
                 "internalType": "string",
-                "name": "hash",
+                "name": "videoId",
                 "type": "string"
             },
             {
                 "indexed": false,
                 "internalType": "string",
-                "name": "title",
+                "name": "name",
                 "type": "string"
             },
             {
@@ -27,26 +27,26 @@
             },
             {
                 "indexed": false,
+                "internalType": "uint256",
+                "name": "createdAt",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "durationInSeconds",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
                 "internalType": "string",
-                "name": "location",
+                "name": "downloadUrl",
                 "type": "string"
             },
             {
                 "indexed": false,
                 "internalType": "string",
-                "name": "category",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "internalType": "string",
-                "name": "thumbnailHash",
-                "type": "string"
-            },
-            {
-                "indexed": false,
-                "internalType": "string",
-                "name": "date",
+                "name": "playbackId",
                 "type": "string"
             },
             {
@@ -58,6 +58,23 @@
         ],
         "name": "VideoUploaded",
         "type": "event"
+    },
+    {
+        "stateMutability": "payable",
+        "type": "fallback"
+    },
+    {
+        "inputs": [],
+        "name": "_creator",
+        "outputs": [
+            {
+                "internalType": "address payable",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
     },
     {
         "inputs": [],
@@ -74,7 +91,7 @@
     },
     {
         "inputs": [],
-        "name": "name",
+        "name": "contractName",
         "outputs": [
             {
                 "internalType": "string",
@@ -89,38 +106,43 @@
         "inputs": [
             {
                 "internalType": "string",
-                "name": "_videoHash",
+                "name": "videoId",
                 "type": "string"
             },
             {
                 "internalType": "string",
-                "name": "_title",
+                "name": "name",
                 "type": "string"
             },
             {
                 "internalType": "string",
-                "name": "_description",
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "createdAt",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "durationInSeconds",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "downloadUrl",
                 "type": "string"
             },
             {
                 "internalType": "string",
-                "name": "_location",
+                "name": "playbackId",
                 "type": "string"
             },
             {
-                "internalType": "string",
-                "name": "_category",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_thumbnailHash",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_date",
-                "type": "string"
+                "internalType": "address",
+                "name": "author",
+                "type": "address"
             }
         ],
         "name": "uploadVideo",
@@ -144,21 +166,21 @@
     {
         "inputs": [
             {
-                "internalType": "uint256",
+                "internalType": "string",
                 "name": "",
-                "type": "uint256"
+                "type": "string"
             }
         ],
         "name": "videos",
         "outputs": [
             {
                 "internalType": "string",
-                "name": "hash",
+                "name": "videoId",
                 "type": "string"
             },
             {
                 "internalType": "string",
-                "name": "title",
+                "name": "name",
                 "type": "string"
             },
             {
@@ -167,23 +189,23 @@
                 "type": "string"
             },
             {
+                "internalType": "uint256",
+                "name": "createdAt",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "durationInSeconds",
+                "type": "uint256"
+            },
+            {
                 "internalType": "string",
-                "name": "location",
+                "name": "downloadUrl",
                 "type": "string"
             },
             {
                 "internalType": "string",
-                "name": "category",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "thumbnailHash",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "date",
+                "name": "playbackId",
                 "type": "string"
             },
             {
@@ -194,5 +216,9 @@
         ],
         "stateMutability": "view",
         "type": "function"
+    },
+    {
+        "stateMutability": "payable",
+        "type": "receive"
     }
 ]
