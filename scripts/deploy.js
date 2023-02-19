@@ -15,15 +15,15 @@ async function main() {
   //   `MantlNFT deployed to ${mantleNFT.address}`
   // );
 
-  // const user = await hre.ethers.getContractFactory("User");
-  // const userContract = await user.deploy();
-  // await userContract.deployed();
-  // console.log(`UserContract deployed to ${userContract.address}`);
+  const streamer = await hre.ethers.getContractFactory("Streamer");
+  const streamerContract = await streamer.deploy();
+  await streamerContract.deployed();
+  console.log(`StreamerContract deployed to ${streamerContract.address}`);
 
-  const peerTube = await hre.ethers.getContractFactory("PeerTube");
-  const peerTubeContract = await peerTube.deploy();
-  await peerTubeContract.deployed();
-  console.log(`PeerTubeContract deployed to ${peerTubeContract.address}`);
+  // const peerTube = await hre.ethers.getContractFactory("PeerTube");
+  // const peerTubeContract = await peerTube.deploy();
+  // await peerTubeContract.deployed();
+  // console.log(`PeerTubeContract deployed to ${peerTubeContract.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

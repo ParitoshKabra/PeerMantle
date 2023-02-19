@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract User {
-    mapping(address => string) public addressToUsername;
+contract Streamer {
+    mapping(string => address) public linkToStreamer;
 
-    function addOrChangeUsername(string memory username) public {
-        addressToUsername[msg.sender] = username;
+    function addLinkStreamerMap(string memory link) public {
+        linkToStreamer[link] = address(msg.sender);
     }
 }
