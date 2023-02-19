@@ -8,18 +8,8 @@ contract PeerTube {
     string public contractName = "PeerTube";
     // Creating a mapping of videoCount to Video
     mapping(string => Video) public videos;
-    address public _owner;
     address payable public _creator =
         payable(0x88A4643d6900C28086aD21148D5CfffD32fA37C5);
-
-    constructor() {
-        _owner = msg.sender;
-    }
-
-    modifier isOwner() {
-        require(_owner == msg.sender);
-        _;
-    }
 
     //  Create a struct called 'Video' with the following properties:
     struct Video {
@@ -27,7 +17,7 @@ contract PeerTube {
         string name;
         string description;
         uint256 createdAt;
-        uint256 durationInSeconds;
+        uint256 size;
         string downloadUrl;
         string playbackId;
         address author;
@@ -39,7 +29,7 @@ contract PeerTube {
         string name,
         string description,
         uint256 createdAt,
-        uint256 durationInSeconds,
+        uint256 size,
         string downloadUrl,
         string playbackId,
         address author
@@ -51,11 +41,10 @@ contract PeerTube {
         string memory name,
         string memory description,
         uint256 createdAt,
-        uint256 durationInSeconds,
+        uint256 size,
         string memory downloadUrl,
-        string memory playbackId,
-        address author
-    ) public isOwner {
+        string memory playbackId
+    ) public {
         // Validating the video hash, title and author's address
         require(bytes(videoId).length > 0);
         require(bytes(name).length > 0);
@@ -68,10 +57,10 @@ contract PeerTube {
             name,
             description,
             createdAt,
-            durationInSeconds,
+            size,
             downloadUrl,
             playbackId,
-            author
+            msg.sender
         );
         // Triggering the event
         emit VideoUploaded(
@@ -79,10 +68,10 @@ contract PeerTube {
             name,
             description,
             createdAt,
-            durationInSeconds,
+            size,
             downloadUrl,
             playbackId,
-            author
+            msg.sender
         );
     }
 

@@ -1,10 +1,5 @@
 [
     {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
         "anonymous": false,
         "inputs": [
             {
@@ -34,7 +29,7 @@
             {
                 "indexed": false,
                 "internalType": "uint256",
-                "name": "durationInSeconds",
+                "name": "size",
                 "type": "uint256"
             },
             {
@@ -69,19 +64,6 @@
         "outputs": [
             {
                 "internalType": "address payable",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "_owner",
-        "outputs": [
-            {
-                "internalType": "address",
                 "name": "",
                 "type": "address"
             }
@@ -126,7 +108,7 @@
             },
             {
                 "internalType": "uint256",
-                "name": "durationInSeconds",
+                "name": "size",
                 "type": "uint256"
             },
             {
@@ -138,11 +120,6 @@
                 "internalType": "string",
                 "name": "playbackId",
                 "type": "string"
-            },
-            {
-                "internalType": "address",
-                "name": "author",
-                "type": "address"
             }
         ],
         "name": "uploadVideo",
@@ -195,7 +172,7 @@
             },
             {
                 "internalType": "uint256",
-                "name": "durationInSeconds",
+                "name": "size",
                 "type": "uint256"
             },
             {
